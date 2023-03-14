@@ -1,0 +1,30 @@
+// 플러그인 관리
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.8'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+// 내 프로젝트 group, version 관리
+group = 'com.jscode'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+// 의존성(dependency)을 가져올 저장소
+repositories {
+    mavenCentral()
+}
+
+// 의존성
+dependencies {
+//    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+// test task 에서 junit 을 이용함 명시
+tasks.named('test') {
+    useJUnitPlatform()
+}
