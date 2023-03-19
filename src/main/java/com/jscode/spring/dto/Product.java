@@ -1,8 +1,5 @@
-package com.jscode.spring.product;
+package com.jscode.spring.dto;
 
-import lombok.Getter;
-
-@Getter
 public class Product {
     private final String name;
     private final Long price;
@@ -10,5 +7,12 @@ public class Product {
     public Product(String name, Long price) {
         this.name = name;
         this.price = price;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public Long getPrice() {
+        return price;
     }
 }
