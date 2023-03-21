@@ -16,7 +16,7 @@ public class ProductController {
     }
 
     @GetMapping("api/products")
-    public List<Product> findAll() {
+    public List<com.jscode.spring.entity.Product> findAll() {
         return productService.findAll();
     }
 
@@ -31,7 +31,7 @@ public class ProductController {
     }
 
     @PostMapping("api/products")
-    public String saveProduct(@RequestBody Product product) {
+    public String saveProduct(@RequestBody com.jscode.spring.entity.Product product) {
         productService.save(product);
         return "정상 저장됐습니다.";
     }
