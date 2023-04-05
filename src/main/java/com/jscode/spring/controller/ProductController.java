@@ -1,10 +1,11 @@
 package com.jscode.spring.controller;
 
-import com.jscode.spring.dto.Product;
+import com.jscode.spring.entity.Product;
 import com.jscode.spring.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProductController {
@@ -21,12 +22,12 @@ public class ProductController {
     }
 
     @GetMapping(value = "api/products", params = "id")
-    public Product findOneById(@RequestParam int id) {
+    public Optional<Product> findOneById(@RequestParam Long id) {
         return productService.findOneById(id);
     }
 
     @GetMapping(value = "api/products", params = "name")
-    public Product findOneByName(@RequestParam String name) {
+    public Optional<Product> findOneByName(@RequestParam String name) {
         return productService.findOneByName(name);
     }
 

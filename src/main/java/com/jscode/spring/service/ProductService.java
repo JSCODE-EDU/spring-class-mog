@@ -1,35 +1,33 @@
 package com.jscode.spring.service;
 
-import com.jscode.spring.dto.Product;
-import com.jscode.spring.repository.ProductJpaRepository;
+import com.jscode.spring.entity.Product;
 import com.jscode.spring.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
-    private final ProductJpaRepository productJpaRepository;
 
-    public ProductService(ProductRepository productRepository, ProductJpaRepository productJpaRepository) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.productJpaRepository = productJpaRepository;
     }
 
-    public List<com.jscode.spring.entity.Product> findAll() {
-        return productJpaRepository.findAll();
+    public List<Product> findAll() {
+        return productRepository.findAll();
     }
 
-    public Product findOneById(int id) {
-        return productRepository.findOneById(id);
+    public Optional<Product> findOneById(Long id) {
+        return productRepository.findById(id);
     }
 
-    public Product findOneByName(String name) {
-        return productRepository.findOneByName(name);
+    public Optional<Product> findOneByName(String name) {
+        return productRepository.findByName(name);
     }
 
-    public void save(com.jscode.spring.entity.Product product) {
-        productJpaRepository.save(product);
+    public void save(Product product) {
+        productRepository.save(product);
     }
 }
