@@ -1,5 +1,6 @@
 package com.jscode.spring.controller;
 
+import com.jscode.spring.dto.ProductRequest;
 import com.jscode.spring.entity.Product;
 import com.jscode.spring.service.ProductService;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class ProductController {
     }
 
     @GetMapping("api/products")
-    public List<com.jscode.spring.entity.Product> findAll() {
+    public List<Product> findAll() {
         return productService.findAll();
     }
 
@@ -32,8 +33,8 @@ public class ProductController {
     }
 
     @PostMapping("api/products")
-    public String saveProduct(@RequestBody com.jscode.spring.entity.Product product) {
-        productService.save(product);
+    public String saveProduct(@RequestBody ProductRequest productRequest) {
+        productService.save(productRequest);
         return "정상 저장됐습니다.";
     }
 }
