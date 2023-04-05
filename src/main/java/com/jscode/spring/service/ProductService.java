@@ -1,6 +1,7 @@
 package com.jscode.spring.service;
 
 import com.jscode.spring.dto.Product;
+import com.jscode.spring.repository.ProductJpaRepository;
 import com.jscode.spring.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +10,17 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
+    private final ProductJpaRepository productJpaRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ProductJpaRepository productJpaRepository) {
         this.productRepository = productRepository;
+        this.productJpaRepository = productJpaRepository;
     }
 
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public List<com.jscode.spring.entity.Product> findAll() {
+        return productJpaRepository.findAll();
     }
+
     public Product findOneById(int id) {
         return productRepository.findOneById(id);
     }
@@ -25,7 +29,7 @@ public class ProductService {
         return productRepository.findOneByName(name);
     }
 
-    public void save(Product product) {
-        productRepository.save(product);
+    public void save(com.jscode.spring.entity.Product product) {
+        productJpaRepository.save(product);
     }
 }
