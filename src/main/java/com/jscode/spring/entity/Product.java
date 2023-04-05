@@ -1,14 +1,13 @@
 package com.jscode.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 
 @Table
 @Entity
-@ToString
 @Getter
 @NoArgsConstructor
 public class Product {
@@ -23,6 +22,7 @@ public class Product {
     private Long price;
 
     @ManyToOne
+    @JsonIgnore // controller에서 entity를 직접 반환하지 않고 dto를 사용해서 반환하면 @JsonIgnore는 필요 없음
     @JoinColumn(name="store_id")
     private Store store;
 
